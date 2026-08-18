@@ -641,7 +641,7 @@ void capture_handshake(const String &tssid, const String &mac, uint8_t channel) 
 void target_atk_menu(const String &tssid, const String &mac, uint8_t channel) {
 AGAIN:
     options = {
-        {"Information",         [=]() { wifi_atk_info(tssid, mac, channel); }      },
+        {"Wifi信息",         [=]() { wifi_atk_info(tssid, mac, channel); }      },
         {"Deauth",              [=]() { target_atk(tssid, mac, channel); }         },
 #ifndef LITE_VERSION
         {"Capture Handshake",   [=]() { capture_handshake(tssid, mac, channel); }  },
