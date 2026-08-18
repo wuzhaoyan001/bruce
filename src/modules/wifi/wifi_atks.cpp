@@ -641,12 +641,12 @@ void capture_handshake(const String &tssid, const String &mac, uint8_t channel) 
 void target_atk_menu(const String &tssid, const String &mac, uint8_t channel) {
 AGAIN:
     options = {
-        {"Wifi信息",         [=]() { wifi_atk_info(tssid, mac, channel); }      },
-        {"Deauth",              [=]() { target_atk(tssid, mac, channel); }         },
+        {"WiFi信息",         [=]() { wifi_atk_info(tssid, mac, channel); }      },
+        {"Deauth攻击",              [=]() { target_atk(tssid, mac, channel); }         },
 #ifndef LITE_VERSION
-        {"Capture Handshake",   [=]() { capture_handshake(tssid, mac, channel); }  },
+        {"抓取握手包",   [=]() { capture_handshake(tssid, mac, channel); }  },
 #endif
-        {"Clone Portal",        [=]() { EvilPortal(tssid, channel, false, false); }},
+        {"克隆AP",        [=]() { EvilPortal(tssid, channel, false, false); }},
         {"Deauth+Clone",        [=]() { EvilPortal(tssid, channel, true, false); } },
         {"Deauth+Clone+Verify", [=]() { EvilPortal(tssid, channel, true, true); }  },
     };
