@@ -283,6 +283,16 @@ bool wifiConnectMenu(wifi_mode_t mode) {
 }
 
 void wifiConnectTask(void *pvParameters) {
+    // =========新增代码开始=========
+    // 等待WiFi底层驱动初始化就绪，最多等待1500ms，解决ESP_ERR_WIFI_NOT_INIT竞态
+    uint16_t waitCount = 0;
+    wifi_mode_t dummyMode;
+    while ((esp_wifi_get_mode(&dummyMode) != ESP_OK) && waitCount < 15)
+    {
+        vTaskDelay(pdMS_TO_TICKS(100));
+        waitCount++;
+    }
+    // =========新增代码结束=========
     if (WiFi.isConnected()) return;
 
     if (FORCE_RADIO_TEARDOWN_ON_SWITCH) {
