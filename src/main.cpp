@@ -498,7 +498,7 @@ void setup() {
     RAM_LOG("after-tft-clock-led");
 
     options.reserve(20); // preallocate some options space to avoid fragmentation
-
+    vTaskDelay(pdMS_TO_TICKS(3000));
     RAM_LOG("before-wifi-init"); // largest contiguous internal block here gates Wi-Fi/BLE
 
     // Set WiFi country to avoid warnings and ensure max power
